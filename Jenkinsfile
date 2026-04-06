@@ -8,10 +8,6 @@ pipeline {
         COURSE= "Jenkins"
         appVersion = ""
     }
-    options {
-        timeout(time: 10, unit: 'SECONDS')
-        disableConcurrentBuilds()
-    }
     stages {
         stage('Read Version') {
             steps {
@@ -23,11 +19,11 @@ pipeline {
                 
             }
         }
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
                 script{
                    sh """
-                       echo "Testing"
+                       npm install
                    """
                 }
             }
